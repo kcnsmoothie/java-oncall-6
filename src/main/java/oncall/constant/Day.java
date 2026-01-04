@@ -16,4 +16,12 @@ public enum Day {
         this.day = day;
         this.type = type;
     }
+
+    public String getDay() {
+        return day;
+    }
+
+    public Type getType() {
+        return type;
+    }
 }
