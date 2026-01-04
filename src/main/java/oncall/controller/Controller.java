@@ -1,6 +1,8 @@
 package oncall.controller;
 
+import java.util.List;
 import oncall.service.OncallService;
+import oncall.util.Parser;
 import oncall.view.InputView;
 import oncall.view.OutputView;
 
@@ -23,6 +25,7 @@ public class Controller {
         while (true) {
             try {
                 String inputMonthStartDay = inputView.inputMonthStartDay();
+                List<String> parsedMonthStartDay = Parser.parseByDelimeter(inputMonthStartDay);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
             }
