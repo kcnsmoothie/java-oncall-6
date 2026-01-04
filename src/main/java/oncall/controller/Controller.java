@@ -16,13 +16,13 @@ public class Controller {
     }
 
     public void run() {
-
+        getMonthStartDay();
     }
 
     private int getMonthStartDay() {
         while (true) {
             try {
-
+                String inputMonthStartDay = inputView.inputMonthStartDay();
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
             }
