@@ -24,6 +24,7 @@ public class Controller {
         String startDay = parsedMonthStartDay.get(1);
         List<String> weekdayOrder = getWeekdayOrder();
         List<String> weekendOrder = getWeekendOrder();
+        int days = oncallService.calculateDaysOfMonth(month);
     }
 
     private List<String> getMonthStartDay() {
