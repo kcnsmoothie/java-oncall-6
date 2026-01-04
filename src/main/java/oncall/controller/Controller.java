@@ -22,6 +22,7 @@ public class Controller {
         List<String> parsedMonthStartDay = getMonthStartDay();
         int month = Parser.stringToInt(parsedMonthStartDay.get(0));
         String startDay = parsedMonthStartDay.get(1);
+        List<String> weekdayOrder = getWeekdayOrder();
     }
 
     private List<String> getMonthStartDay() {
@@ -34,6 +35,18 @@ public class Controller {
                 String startDay = parsedMonthStartDay.get(1);
                 Validator.validateStartDayRange(startDay);
                 return parsedMonthStartDay;
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e);
+            }
+        }
+    }
+
+    private List<String> getWeekdayOrder() {
+        while (true) {
+            try {
+                String inputWeekdayOrder = inputView.inputWeekdayOrder();
+                List<String> weekdayOrder = Parser.parseByDelimeter(inputWeekdayOrder);
+                return weekdayOrder;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
             }
