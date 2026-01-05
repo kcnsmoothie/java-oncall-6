@@ -1,6 +1,7 @@
 package oncall.controller;
 
 import java.util.List;
+import oncall.constant.Day;
 import oncall.service.OncallService;
 import oncall.util.Parser;
 import oncall.util.Validator;
@@ -21,10 +22,16 @@ public class Controller {
     public void run() {
         List<String> parsedMonthStartDay = getMonthStartDay();
         int month = Parser.stringToInt(parsedMonthStartDay.get(0));
-        String startDay = parsedMonthStartDay.get(1);
+        String strStartDay = parsedMonthStartDay.get(1);
+
         List<String> weekdayOrder = getWeekdayOrder();
         List<String> weekendOrder = getWeekendOrder();
+
         int days = oncallService.calculateDaysOfMonth(month);
+        int startDayIndex = oncallService.calculateDayIndex(strStartDay);
+        List<String> outputDayList = oncallService.loopDay(days, startDayIndex);
+
+        outputView.printWorkTableMessage(month,days,outputDayList);
     }
 
     private List<String> getMonthStartDay() {
