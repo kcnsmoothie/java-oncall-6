@@ -29,9 +29,11 @@ public class Controller {
 
         int days = oncallService.calculateDaysOfMonth(month);
         int startDayIndex = oncallService.calculateDayIndex(strStartDay);
-        List<String> outputDayList = oncallService.loopDay(days, startDayIndex);
 
-        outputView.printWorkTableMessage(month,days,outputDayList);
+        List<Day> outputDay = oncallService.calculateOutputDay(days, startDayIndex);
+        List<String> outputDayList = oncallService.loopDay(days, startDayIndex);
+        List<String> outputWorkOrder = oncallService.calculateWorkOrder(outputDay, weekdayOrder, weekendOrder);
+        outputView.printWorkTableMessage(month,days,outputDayList,outputWorkOrder);
     }
 
     private List<String> getMonthStartDay() {
