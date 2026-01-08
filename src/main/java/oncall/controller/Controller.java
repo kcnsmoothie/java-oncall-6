@@ -57,6 +57,8 @@ public class Controller {
             try {
                 String inputWeekdayOrder = inputView.inputWeekdayOrder();
                 List<String> weekdayOrder = Parser.parseByDelimeter(inputWeekdayOrder);
+                Validator.validateNotDuplicate(weekdayOrder);
+                Validator.validateStrSize(weekdayOrder);
                 return weekdayOrder;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
@@ -69,6 +71,8 @@ public class Controller {
             try {
                 String inputWeekendOrder = inputView.inputWeekendOrder();
                 List<String> weekendOrder = Parser.parseByDelimeter(inputWeekendOrder);
+                Validator.validateNotDuplicate(weekendOrder);
+                Validator.validateStrSize(weekendOrder);
                 return weekendOrder;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
