@@ -3,7 +3,6 @@ package oncall.util;
 import static oncall.constant.ErrorMessage.DEFAULT_ERROR;
 
 import java.util.Arrays;
-import java.util.Objects;
 import oncall.constant.Day;
 
 public class Validator {
